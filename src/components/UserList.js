@@ -28,7 +28,7 @@ export default class UserList extends Component {
           {
             this.state.users.map((user, idx) =>
               <li onClick={() => this.selectUser(user)} key={idx}>
-                {user.username}
+                {user.username} {user.id}
               </li>
             )
           }

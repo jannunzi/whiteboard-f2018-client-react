@@ -14,6 +14,13 @@ export default class CourseList extends Component {
         courses: courses
       }))
   }
+  componentDidUpdate() {
+    fetch("http://localhost:8080/api/user/"+this.props.userId+"/course")
+      .then(response=> response.json())
+      .then(courses => this.setState({
+          courses: courses
+        }))
+  }
   render() {
     return(
       <div>
