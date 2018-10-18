@@ -8,7 +8,7 @@ export default class CourseList extends Component {
     }
   }
   componentDidMount() {
-    fetch("http://localhost:8080/api/course")
+    fetch("http://localhost:8080/api/user/"+this.props.userId+"/course")
       .then(response=> response.json())
       .then(courses => this.setState({
         courses: courses
@@ -17,7 +17,7 @@ export default class CourseList extends Component {
   render() {
     return(
       <div>
-        <h1>Course List</h1>
+        <h2>Course List</h2>
         <ul>
           {
             this.state.courses.map((course, idx) =>

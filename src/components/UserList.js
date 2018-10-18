@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CourseList from "./CourseList";
 
 export default class UserList extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ export default class UserList extends Component {
             )
           }
         </ul>
-        <h3>{this.state.selectedUser ? this.state.selectedUser.username:''}</h3>
+        {this.state.selectedUser.id && <CourseList userId={this.state.selectedUser ? this.state.selectedUser.id : -1}/>}
       </div>
     )
   }
