@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
+import TopicList from "./TopicList";
 
 export default class LessonList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      lessons: []
+      lessons: [],
+      selectedLesson: {}
     }
   }
   componentDidUpdate(prevProps) {
@@ -23,6 +25,10 @@ export default class LessonList extends Component {
         }))
     }
   }
+  selectLesson = lesson =>
+    this.setState({
+      selectedLesson: lesson
+    })
   render() {
     return(
       <div>
@@ -30,12 +36,21 @@ export default class LessonList extends Component {
         <ul>
           {
             this.state.lessons.map((lesson, idx) =>
-              <li key={idx}>
+              <li onClick={() => this.selectLesson(lesson)}
+                  key={idx}>
                 {lesson.title} {lesson.id}
               </li>
             )
           }
         </ul>
+        {
+          this.state.selectedLesson.id &&
+          <TopicList
+            userId={this.props.userId}
+            courseId={this.props.courseId}
+            moduleId={this.props.moduleId}
+            lessonId={this.state.selectedLesson.id}/>
+        }
       </div>
     )
   }
