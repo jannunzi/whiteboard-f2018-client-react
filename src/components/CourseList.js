@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
+import ModuleList from "./ModuleList";
 
 export default class CourseList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      courses: []
+      courses: [],
+      selectedCourse: {}
     }
   }
   componentDidMount() {
@@ -14,13 +16,19 @@ export default class CourseList extends Component {
         courses: courses
       }))
   }
-  componentDidUpdate() {
-    fetch("http://localhost:8080/api/user/"+this.props.userId+"/course")
-      .then(response=> response.json())
-      .then(courses => this.setState({
+  componentDidUpdate(prevProps) {
+    if(prevProps.userId != this.props.userId) {
+      fetch("http://localhost:8080/api/user/"+this.props.userId+"/course")
+        .then(response=> response.json())
+        .then(courses => this.setState({
           courses: courses
         }))
+    }
   }
+  selectCourse = course =>
+    this.setState({
+      selectedCourse: course
+    })
   render() {
     return(
       <div>
@@ -28,7 +36,10 @@ export default class CourseList extends Component {
         <ul>
           {
             this.state.courses.map((course, idx) =>
-              <li key={idx}>{course.title}</li>
+              <li onClick={() => this.selectCourse(course)}
+                  key={idx}>
+                {course.title} {course.id}
+              </li>
             )
           }
         </ul>
