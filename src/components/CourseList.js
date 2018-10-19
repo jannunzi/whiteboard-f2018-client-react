@@ -43,7 +43,7 @@ export default class CourseList extends Component {
             )
           }
         </ul>
-        <ModuleList courseId={this.state.selectedCourse.id}/>
+        <ModuleList userId={this.props.userId} courseId={this.state.selectedCourse.id}/>
       </div>
     )
   }

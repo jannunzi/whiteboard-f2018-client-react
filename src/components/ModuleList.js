@@ -35,7 +35,7 @@ export default class ModuleList extends Component {
           )
         }
         </ul>
-        <LessonList forModule={this.state.selectedModule}/>
+        <LessonList userId={this.props.userId} courseId={this.props.courseId} moduleId={this.state.selectedModule.id}/>
       </div>
     )
   }
