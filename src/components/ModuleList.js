@@ -1,10 +1,12 @@
 import React, {Component} from  'react'
+import LessonList from "./LessonList";
 
 export default class ModuleList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      modules: []
+      modules: [],
+      selectedModule: {}
     }
   }
   componentDidUpdate(prevPros) {
@@ -16,6 +18,10 @@ export default class ModuleList extends Component {
         }))
     }
   }
+  selectModule = module =>
+    this.setState({
+      selectedModule: module
+    })
   render() {
     return(
       <div>
@@ -23,12 +29,13 @@ export default class ModuleList extends Component {
         <ul>
         {
           this.state.modules.map((module, idx) =>
-            <li key={idx}>
+            <li onClick={() => this.selectModule(module)} key={idx}>
               {module.title} {module.id}
             </li>
           )
         }
         </ul>
+        <LessonList forModule={this.state.selectedModule}/>
       </div>
     )
   }

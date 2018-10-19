@@ -7,7 +7,7 @@ export default class LessonList extends Component {
   render() {
     return(
       <div>
-        <h2>Lessons</h2>
+        <h2>Lessons {this.props.forModule.title}</h2>
       </div>
     )
   }
