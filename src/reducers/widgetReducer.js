@@ -1,15 +1,15 @@
-const widget = () => ({
-  widgets:
-    [
-      {
-        "id": 123,
-        "title": "widget 1"
-      },
-      {
-        "id": 234,
-        "title": "widget 2"
+const widget = (state, action) =>
+{
+  switch (action.type) {
+    case 'LOAD_WIDGETS':
+      return {
+        widgets: action.widgets
       }
-    ]
-})
+    default:
+      return {
+        widgets: []
+      }
+  }
+}
 
 export default widget
