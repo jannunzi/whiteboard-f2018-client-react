@@ -44,7 +44,7 @@ export default class LessonList extends Component {
           }
         </ul>
         {
-          this.state.selectedLesson.id &&
+          this.state.selectedLesson.id >=0 &&
           <TopicList
             userId={this.props.userId}
             courseId={this.props.courseId}

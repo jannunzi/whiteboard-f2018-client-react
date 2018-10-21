@@ -19,7 +19,7 @@ const dispathToProperties = dispatch => ({
     url += "/topic/"
     url += topicId
     url += "/widget"
-    url = "http://localhost:8080/api/widget"
+    url = "http://localhost:8080/api/topic/"+topicId+"/widget"
     fetch(url)
       .then(response => response.json())
       .then(widgets => dispatch({

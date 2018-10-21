@@ -25,6 +25,7 @@ export default class TopicList extends Component {
       url += "/lesson/"
       url += this.props.lessonId
       url += "/topic"
+      url = "http://localhost:8080/api/topic"
       fetch(url)
         .then(response => response.json())
         .then(topics => this.setState({
