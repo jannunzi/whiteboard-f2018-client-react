@@ -30,10 +30,10 @@ export default class WidgetList extends Component {
   render() {
     return(
       <div>
-        <h2>Widgets</h2>
+        <h2>Widgets</h2>  
         <ul>
           {
-            this.state.widgets.map((widget, idx) =>
+            this.props.widgets.map((widget, idx) =>
               <li key={idx}>
                 {widget.title} {widget.id}
               </li>

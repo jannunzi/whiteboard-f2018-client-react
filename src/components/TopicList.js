@@ -1,5 +1,10 @@
 import React, {Component} from 'react'
-import WidgetList from "./WidgetList";
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import widgetReducer from '../reducers/widgetReducer'
+import WidgetListContainer from "../containers/WidgetListContainer"
+
+const store = createStore(widgetReducer)
 
 export default class TopicList extends Component {
   constructor(props) {
@@ -47,12 +52,14 @@ export default class TopicList extends Component {
         </ul>
         {
           this.state.selectedTopic.id &&
-          <WidgetList
-            userId={this.props.userId}
-            courseId={this.props.courseId}
-            moduleId={this.props.moduleId}
-            lessonId={this.props.lessonId}
-            topicId={this.state.selectedTopic.id}/>
+            <Provider store={store}>
+            <WidgetListContainer
+              userId={this.props.userId}
+              courseId={this.props.courseId}
+              moduleId={this.props.moduleId}
+              lessonId={this.props.lessonId}
+              topicId={this.state.selectedTopic.id}/>
+            </Provider>
         }
       </div>
     )
