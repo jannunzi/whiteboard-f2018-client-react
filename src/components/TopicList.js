@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
+import WidgetList from "./WidgetList";
 
 export default class TopicList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      topics: []
+      topics: [],
+      selectedTopic: {}
     }
   }
   componentDidUpdate(prevProps) {
@@ -25,6 +27,10 @@ export default class TopicList extends Component {
         }))
     }
   }
+  selectTopic = topic =>
+    this.setState({
+      selectedTopic: topic
+    })
   render() {
     return(
       <div>
@@ -32,12 +38,22 @@ export default class TopicList extends Component {
         <ul>
           {
             this.state.topics.map((topic, idx) =>
-              <li key={idx}>
+              <li onClick={() => this.selectTopic(topic)}
+                key={idx}>
                 {topic.title} {topic.id}
               </li>
             )
           }
         </ul>
+        {
+          this.state.selectedTopic.id &&
+          <WidgetList
+            userId={this.props.userId}
+            courseId={this.props.courseId}
+            moduleId={this.props.moduleId}
+            lessonId={this.props.lessonId}
+            topicId={this.state.selectedTopic.id}/>
+        }
       </div>
     )
   }
