@@ -18,6 +18,7 @@ export default class LessonList extends Component {
       url += "/module/"
       url += this.props.moduleId
       url += "/lesson"
+      url = "http://localhost:8080/api/lesson"
       fetch(url)
         .then(response => response.json())
         .then(lessons => this.setState({

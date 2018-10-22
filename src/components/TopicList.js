@@ -16,16 +16,8 @@ export default class TopicList extends Component {
   }
   componentDidUpdate(prevProps) {
     if(prevProps.lessonId !== this.props.lessonId) {
-      let url = "http://localhost:8080/api/user/"
-      url += this.props.userId
-      url += "/course/"
-      url += this.props.courseId
-      url += "/module/"
-      url += this.props.moduleId
-      url += "/lesson/"
-      url += this.props.lessonId
-      url += "/topic"
-      url = "http://localhost:8080/api/topic"
+      let url = "http://localhost:8080/api/lesson/"
+      url += this.props.lessonId+"/topic"
       fetch(url)
         .then(response => response.json())
         .then(topics => this.setState({
