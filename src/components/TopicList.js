@@ -25,11 +25,17 @@ export default class TopicList extends Component {
       url += "/lesson/"
       url += this.props.lessonId
       url += "/topic"
+
+      url = "http://localhost:8080/api/topic"
+
       fetch(url)
         .then(response => response.json())
-        .then(topics => this.setState({
-          topics: topics
-        }))
+        .then(topics => {
+          console.log(topics)
+          this.setState({
+            topics: topics
+          })
+        })
     }
   }
   selectTopic = topic =>
@@ -51,7 +57,7 @@ export default class TopicList extends Component {
           }
         </ul>
         {
-          this.state.selectedTopic.id &&
+          this.state.selectedTopic.id >=0 &&
             <Provider store={store}>
             <WidgetListContainer
               userId={this.props.userId}

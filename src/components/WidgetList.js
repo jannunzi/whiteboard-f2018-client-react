@@ -8,13 +8,15 @@ export default class WidgetList extends Component {
     }
   }
   componentDidUpdate(prevProps) {
-    this.props.loadWidgets(
-      this.props.userId,
-      this.props.courseId,
-      this.props.moduleId,
-      this.props.lessonId,
-      this.props.topicId
-    )
+    if(this.props.topicId != prevProps.topicId) {
+      this.props.loadWidgets(
+        this.props.userId,
+        this.props.courseId,
+        this.props.moduleId,
+        this.props.lessonId,
+        this.props.topicId
+      )
+    }
   }
   render() {
     return(

@@ -33,7 +33,8 @@ export default class UserList extends Component {
             )
           }
         </ul>
-        {this.state.selectedUser.id && <CourseList userId={this.state.selectedUser ? this.state.selectedUser.id : -1}/>}
+        {this.state.selectedUser.id &&
+        <CourseList userId={this.state.selectedUser ? this.state.selectedUser.id : -1}/>}
       </div>
     )
   }
