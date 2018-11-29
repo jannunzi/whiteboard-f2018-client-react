@@ -8,7 +8,7 @@ export default class WidgetList extends Component {
     }
   }
   componentDidUpdate(prevProps) {
-    if(prevProps.topicId != this.props.topicId) {
+    if(this.props.topicId != prevProps.topicId) {
       this.props.loadWidgets(
         this.props.userId,
         this.props.courseId,

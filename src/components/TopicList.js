@@ -16,13 +16,15 @@ export default class TopicList extends Component {
   }
   componentDidUpdate(prevProps) {
     if(prevProps.lessonId !== this.props.lessonId) {
-      let url = "http://localhost:8080/api/lesson/"
-      url += this.props.lessonId+"/topic"
+      let url = "http://localhost:8080/api/topic"
       fetch(url)
         .then(response => response.json())
-        .then(topics => this.setState({
-          topics: topics
-        }))
+        .then(topics => {
+          console.log(topics)
+          this.setState({
+            topics: topics
+          })
+        })
     }
   }
   selectTopic = topic =>
@@ -44,7 +46,7 @@ export default class TopicList extends Component {
           }
         </ul>
         {
-          this.state.selectedTopic.id &&
+          this.state.selectedTopic.id >=0 &&
             <Provider store={store}>
             <WidgetListContainer
               userId={this.props.userId}

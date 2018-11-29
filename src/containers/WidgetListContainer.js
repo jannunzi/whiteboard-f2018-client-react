@@ -8,18 +8,7 @@ const stateToProperties = state =>({
 
 const dispathToProperties = dispatch => ({
   loadWidgets: (userId, courseId, moduleId, lessonId, topicId) => {
-    let url = "http://localhost:8080/api/user/"
-    url += userId
-    url += "/course/"
-    url += courseId
-    url += "/module/"
-    url += moduleId
-    url += "/lesson/"
-    url += lessonId
-    url += "/topic/"
-    url += topicId
-    url += "/widget"
-    url = "http://localhost:8080/api/topic/"+topicId+"/widget"
+    let url = "http://localhost:8080/api/topic/"+topicId+"/widget"
     fetch(url)
       .then(response => response.json())
       .then(widgets => dispatch({
